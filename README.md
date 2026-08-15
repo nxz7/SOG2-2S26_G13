@@ -1,5 +1,7 @@
 # SOG2-2S26_G13
 
+[CARPETA](https://drive.google.com/drive/folders/1JQohfpxkPYn_BcaDjtwaRtCwAVzYi7L2?usp=sharing)
+
 | Nombre | Carnet |
 | ----------- | --------------------- |
 | Natalia Mariel Calderón Echeverría | 202200007 |
