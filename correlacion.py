@@ -86,8 +86,7 @@ cramers_v = (chi2 / (n * (k - 1))) ** 0.5
 print(f"\nCramerss V = {cramers_v:.4f}")
 
 # ------------------------------------------------------------------
-# PASO 12: Visualización - barras apiladas por género
-# ------------------------------------------------------------------
+
 fig, ax = plt.subplots(figsize=(8, 5.5))
 colores_metodo = ["#d39ce9", "#abf1af", "#fddf7a"]
 bottom = np.zeros(2)
