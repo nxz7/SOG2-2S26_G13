@@ -159,10 +159,12 @@ compra.insert(0, 'id_compra', range(1, len(compra) + 1))
 ### Conclusión
 
 Uno de los hallazgos más relevantes del análisis es que la edad del cliente no presenta una relación lineal significativa con el comportamiento de compra dentro de este dataset. Al calcular la correlación entre `Edad` y `Venta_total` se obtiene un valor de -0.025, y entre `Edad` y `N_Compras` de -0.05, ambos prácticamente nulos.
+
 ![image](https://hackmd.io/_uploads/Hk7LS3GPGe.png)
 
 
 Esto se confirma al segmentar a los clientes en grupos etarios: el grupo de 18-25 años gasta en promedio Q207.8 con 5.27 compras, el de 26-35 años gasta Q212.7 con 5.25 compras, el de 36-45 años gasta Q204.7 con 5.04 compras, y así sucesivamente hasta el grupo de 56-79 años con Q192.5 y 4.73 compras.
+
 ![image](https://hackmd.io/_uploads/HJsKS3GvMl.png)
 
 
@@ -173,6 +175,7 @@ Esto contrasta con la intuición inicial de que los clientes más jóvenes, por 
 Este hallazgo tiene una implicación directa para el negocio: no conviene diseñar estrategias de marketing, promociones o segmentación basadas principalmente en la edad del cliente, ya que esta variable no está explicando de forma significativa las diferencias en el valor de compra.
 
 En su lugar, otras variables del dataset sí muestran relaciones más claras y accionables, como el canal de compra (tienda física representa el 54% de los registros frente a 46% en línea) o el uso combinado de boletines y vales, donde los clientes que reciben boletín tienen una probabilidad notablemente mayor de usar vale (811 de 2,921, contra 443 de 3,579 sin boletín).
+
 ![image](https://hackmd.io/_uploads/Hk-NLhMPGg.png)
 ![image](https://hackmd.io/_uploads/rkNLI3GDMx.png)
 
