@@ -7,7 +7,7 @@
 
 - Enteros: `Edad`, `Genero`, `N_Compras`, `MetodoPago`, `Tiempo`, `Navegador`, `Boletin`, `Vale`
 - Decimales: `Venta_total`, `MontoCompra`
-- `FechaCompra` viene como texto en formato `dd.mm.yy` (ej. `02.02.21`) — se convirtió a tipo fecha real para poder agrupar por mes/trimestre.
+- `FechaCompra` viene como texto en formato `dd.mm.yy` (ej. `02.02.21`), se convirtió a tipo fecha real para poder agrupar por mes/trimestre.
 
 **Validación de dominios:** Se confirmó que las variables categóricas están dentro de los rangos que define el enunciado, sin valores fuera de catálogo:
 
