@@ -189,3 +189,80 @@ Para una empresa que está a punto de abrir una sucursal física y ya reporta un
 1. **Rediseñar las campañas de marketing y fidelización basándolas en comportamiento transaccional (canal, uso de boletín/vale) en vez de en la edad del cliente**, ya que los datos muestran que la edad no diferencia el gasto ni la frecuencia de compra, mientras que sí existe una relación clara entre recibir boletín y usar vale. La empresa puede usar el boletín como palanca activa para incrementar el uso de vales y, con ello, la recurrencia de compra.
 
 2. **Diseñar la sucursal física y el catálogo digital como canales complementarios y no como audiencias separadas**, dado que el 54% de las transacciones ya ocurren en tienda física frente a un 46% distribuido entre los 4 navegadores. Esto implica invertir en integrar inventario y promociones entre ambos canales (ej. vales/boletines válidos en cualquiera de los dos) en lugar de tratar la apertura de la sucursal como un canal nuevo e independiente del negocio online ya existente.
+
+## Análisis de tendencias
+
+**Ventas por mes:**
+
+Para identificar los meses con mayor y menor nivel de ventas se agruparon las compras según el mes de `fecha_compra` y se calculó tanto el monto total vendido como la cantidad de transacciones realizadas durante cada período.
+
+El mes con mayor facturación fue **marzo**, con un total de **Q22,994.34**, mientras que **noviembre** presentó la menor facturación del año con **Q19,779.24**.
+
+Al analizar la cantidad de transacciones se identificó que **diciembre** fue el mes con mayor número de compras, con **577 transacciones**, mientras que **noviembre** registró la menor cantidad con **493 transacciones**.
+
+Un aspecto relevante es que el mes con mayor cantidad de compras no coincide con el mes de mayor facturación. Aunque diciembre registró más transacciones, marzo obtuvo un monto total de ventas superior. Esto indica que la cantidad de compras por sí sola no determina los ingresos generados, ya que también interviene el monto de cada transacción.
+
+![image](./graficos/3a_ranking_ventas_mes.png)
+
+**Preferencia de navegadores:**
+
+Para determinar el navegador más y menos utilizado se contabilizaron las transacciones asociadas con cada uno de los valores registrados en el catálogo `NAVEGADOR`.
+
+La **tienda física** representa el principal canal de compra dentro del conjunto de datos, con **3,523 transacciones**, equivalentes aproximadamente al **54.20%** de las 6,500 compras registradas.
+
+Debido a que el valor `0` corresponde a tienda física y no a un navegador web, para responder específicamente cuál es el navegador más y menos utilizado se analizaron únicamente los canales digitales.
+
+Entre estos, el **Navegador 1** fue el más utilizado con **1,273 transacciones**, seguido del Navegador 2 con 847 y del Navegador 3 con 660. El **Navegador 4** fue el menos utilizado con únicamente **197 transacciones**.
+
+La diferencia entre el Navegador 1 y el Navegador 4 muestra que los clientes presentan una preferencia considerable por determinados entornos de navegación al momento de realizar sus compras en línea.
+
+![image](./graficos/3b_preferencia_navegadores.png)
+
+**Ventas realizadas mediante efectivo:**
+
+Para identificar las ventas pagadas en efectivo se filtraron las compras cuyo `id_metodo_pago` corresponde al valor `0`, definido dentro del catálogo como **Efectivo**.
+
+Se identificaron **1,207 transacciones** realizadas mediante esta modalidad de pago, equivalentes aproximadamente al **18.57%** del total de compras registradas. Estas operaciones representan un monto acumulado de **Q47,465.64**.
+
+El enunciado de la práctica también hace referencia a ventas realizadas contra entrega. Sin embargo, el conjunto de datos proporcionado no contiene una categoría independiente que permita identificar específicamente este tipo de operación. Los métodos disponibles únicamente corresponden a efectivo, tarjeta de crédito y tarjeta de débito.
+
+Por esta razón, el análisis se realizó utilizando exclusivamente la categoría de **pago en efectivo**, evitando asumir o generar información que no se encuentra representada directamente en los datos.
+
+**Uso de boletines y vales por mes:**
+
+Para analizar el comportamiento mensual de los boletines y vales se agruparon las transacciones según el mes de compra y se contabilizaron aquellos registros cuyo valor de `boletin` o `vale` corresponde a `1`.
+
+En el caso de los boletines, **diciembre** presentó la mayor cantidad de registros con **262**, seguido de marzo con 261 y octubre con 260. El menor uso de boletines se registró durante **septiembre**, con **200**.
+
+En cuanto a los vales, **marzo** fue el mes con mayor utilización, alcanzando **133 registros**, seguido de diciembre con 128 y septiembre con 120. El menor uso se produjo durante **octubre**, con únicamente **85 registros**.
+
+Los resultados permiten observar que los boletines y los vales no presentan exactamente el mismo comportamiento durante el año. Mientras que el mayor uso de boletines ocurre en diciembre, los vales alcanzan su valor máximo durante marzo. Esto indica que ambas herramientas pueden estar siendo utilizadas de manera diferente por los clientes.
+
+![image](./graficos/3d_boletines_vales_mes.png)
+
+### Metodología de visualizaciones
+
+Para representar los resultados obtenidos durante el análisis de tendencias se seleccionaron tres visualizaciones diferentes, considerando el tipo de información analizada y evitando repetir gráficas que ya habían sido utilizadas durante el análisis exploratorio.
+
+Para las ventas mensuales se utilizó un **gráfico de barras horizontales ordenado según el monto total de facturación**. Este tipo de representación permite comparar directamente los doce meses e identificar de forma sencilla aquellos que presentan los valores más altos y más bajos. Al ordenar los períodos según su facturación se facilita particularmente la identificación de marzo como el mes con mayor monto vendido y noviembre como el de menor facturación.
+
+Para la preferencia de navegadores se utilizó un **gráfico de barras horizontales** tomando únicamente los navegadores asociados con las compras en línea. Este tipo de visualización es apropiado para comparar variables categóricas, debido a que permite observar claramente las diferencias en la cantidad de transacciones registradas por cada navegador. Se decidió separar la tienda física de esta gráfica debido a que representa un canal de compra diferente y no un navegador web.
+
+Finalmente, para analizar la utilización de boletines y vales se seleccionó un **gráfico de barras agrupadas por mes**. Esta representación permite visualizar ambas variables dentro de un mismo período y realizar una comparación directa de su comportamiento durante los doce meses del año. De esta manera se pueden reconocer fácilmente los meses con mayor y menor utilización de cada herramienta y comprobar que ambas presentan tendencias diferentes.
+
+### Conclusión
+
+El análisis de tendencias permitió identificar que las ventas presentan variaciones durante el año, aunque sin una concentración excesiva en un único período. Marzo registró la mayor facturación con Q22,994.34, mientras que noviembre presentó el menor monto vendido con Q19,779.24. Sin embargo, diciembre fue el mes con mayor cantidad de transacciones, demostrando que un mayor número de compras no necesariamente representa una mayor facturación.
+
+También se identificó una participación importante de la tienda física, que concentra el 54.20% de las transacciones. Dentro de los canales digitales, el Navegador 1 fue el más utilizado, mientras que el Navegador 4 presentó una utilización considerablemente menor. Esta diferencia evidencia la necesidad de analizar las causas que influyen en la preferencia de los clientes por determinados canales de compra.
+
+Por otra parte, las compras realizadas en efectivo representan el 18.57% de las transacciones, mientras que el comportamiento mensual de boletines y vales mostró tendencias diferentes. Diciembre presentó el mayor uso de boletines y marzo el mayor uso de vales, indicando que ambas herramientas promocionales no necesariamente son utilizadas de la misma manera durante el año.
+
+En conjunto, los resultados muestran que el desempeño comercial debe evaluarse considerando no solamente el monto vendido, sino también la cantidad de transacciones, el canal utilizado y el comportamiento de las herramientas promocionales. Estos hallazgos pueden servir como base para orientar campañas en meses de menor desempeño, fortalecer los canales digitales y utilizar de forma más estratégica los boletines y vales.
+
+### Acciones concretas
+
+1. **Implementar campañas promocionales durante los meses con menor desempeño comercial**, principalmente en noviembre, utilizando boletines y vales como mecanismos de incentivo para aumentar la cantidad de compras. Posteriormente se puede comparar el comportamiento de las ventas antes y después de las campañas para determinar cuál de estas herramientas genera mejores resultados.
+
+2. **Investigar las causas de la baja utilización del Navegador 4 y mejorar la experiencia de compra en los canales digitales menos utilizados**, evaluando factores como compatibilidad, tiempos de carga, facilidad de navegación y funcionamiento del proceso de compra. Esta información puede utilizarse para reducir las diferencias existentes entre los diferentes navegadores y fortalecer el canal de ventas en línea.
+
