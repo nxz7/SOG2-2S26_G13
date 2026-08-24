@@ -169,3 +169,69 @@ fig.savefig("graficos/4c_barras_boletin_vale.png", dpi=300)
 plt.close(fig)
 
 
+# --------------------------------------------------------------------
+
+# 5c. RELACIÓN ENTRE BOLETÍN Y VALE
+
+tabla_boletin_vale = pd.crosstab(
+    df["Boletin"],
+    df["Vale"]
+)
+
+print("\n----------- BOLETÍN Y VALE -----------")
+print(tabla_boletin_vale)
+
+porcentajes_boletin_vale = pd.crosstab(
+    df["Boletin"],
+    df["Vale"],
+    normalize="index"
+) * 100
+
+print("\nPorcentajes por grupo de boletín:")
+print(porcentajes_boletin_vale.round(2))
+
+chi2, p_valor, grados_libertad, esperados = stats.chi2_contingency(
+    tabla_boletin_vale
+)
+
+n = tabla_boletin_vale.to_numpy().sum()
+phi = (chi2 / n) ** 0.5
+
+print(f"\nChi-cuadrado: {chi2:.4f}")
+print(f"Valor p: {p_valor:.6f}")
+print(f"Grados de libertad: {grados_libertad}")
+print(f"Coeficiente Phi: {phi:.4f}")
+
+ax = porcentajes_boletin_vale.plot(
+    kind="bar",
+    stacked=True,
+    color=["#D8B7E2", "#F4D961"],
+    figsize=(8, 5)
+)
+
+ax.set_title("Relación entre boletín y uso de vale")
+ax.set_xlabel("Recepción de boletín")
+ax.set_ylabel("Porcentaje (%)")
+ax.set_xticklabels(["Sin boletín", "Con boletín"], rotation=0)
+ax.legend(["Sin vale", "Con vale"], title="Uso de vale")
+
+for fila in range(len(porcentajes_boletin_vale)):
+    acumulado = 0
+    for columna in porcentajes_boletin_vale.columns:
+        valor = porcentajes_boletin_vale.iloc[fila][columna]
+        ax.text(
+            fila,
+            acumulado + valor / 2,
+            f"{valor:.2f}%",
+            ha="center",
+            va="center",
+            fontsize=9
+        )
+        acumulado += valor
+
+plt.tight_layout()
+plt.savefig(
+    "graficos/5c_boletin_vale.png",
+    dpi=300
+)
+plt.close()
