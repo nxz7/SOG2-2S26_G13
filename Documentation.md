@@ -156,40 +156,6 @@ compra.insert(0, 'id_compra', range(1, len(compra) + 1))
 
 ```
 
-### Conclusión
-
-Uno de los hallazgos más relevantes del análisis es que la edad del cliente no presenta una relación lineal significativa con el comportamiento de compra dentro de este dataset. Al calcular la correlación entre `Edad` y `Venta_total` se obtiene un valor de -0.025, y entre `Edad` y `N_Compras` de -0.05, ambos prácticamente nulos.
-
-![image](https://hackmd.io/_uploads/Hk7LS3GPGe.png)
-
-
-Esto se confirma al segmentar a los clientes en grupos etarios: el grupo de 18-25 años gasta en promedio Q207.8 con 5.27 compras, el de 26-35 años gasta Q212.7 con 5.25 compras, el de 36-45 años gasta Q204.7 con 5.04 compras, y así sucesivamente hasta el grupo de 56-79 años con Q192.5 y 4.73 compras.
-
-![image](https://hackmd.io/_uploads/HJsKS3GvMl.png)
-
-
-Las diferencias entre grupos son mínimas, lo que indica que el gasto promedio y la frecuencia de compra se mantienen relativamente estables a lo largo de todo el rango de edades (18 a 79 años) representado en la base de datos.
-
-Esto contrasta con la intuición inicial de que los clientes más jóvenes, por estar más habituados a comprar en línea, tenderían a gastar más o comprar con mayor frecuencia que los clientes de mayor edad, o viceversa. En la práctica, ninguno de los dos extremos se cumple de forma marcada.
-
-Este hallazgo tiene una implicación directa para el negocio: no conviene diseñar estrategias de marketing, promociones o segmentación basadas principalmente en la edad del cliente, ya que esta variable no está explicando de forma significativa las diferencias en el valor de compra.
-
-En su lugar, otras variables del dataset sí muestran relaciones más claras y accionables, como el canal de compra (tienda física representa el 54% de los registros frente a 46% en línea) o el uso combinado de boletines y vales, donde los clientes que reciben boletín tienen una probabilidad notablemente mayor de usar vale (811 de 2,921, contra 443 de 3,579 sin boletín).
-
-![image](https://hackmd.io/_uploads/Hk-NLhMPGg.png)
-![image](https://hackmd.io/_uploads/rkNLI3GDMx.png)
-
-
-Esto sugiere que la empresa debería reorientar sus esfuerzos de segmentación hacia el comportamiento transaccional y el canal de interacción del cliente, en lugar de asumir que la demografía por edad es un buen predictor de valor o lealtad.
-
-Para una empresa que está a punto de abrir una sucursal física y ya reporta un porcentaje mayoritario de ventas por ese canal, esta conclusión también refuerza que la inversión en experiencia física y digital se debe pensar de forma transversal a todas las edades, y no como una estrategia dirigida solo a un segmento etario específico.
-
-### Acciones concretas
-
-1. **Rediseñar las campañas de marketing y fidelización basándolas en comportamiento transaccional (canal, uso de boletín/vale) en vez de en la edad del cliente**, ya que los datos muestran que la edad no diferencia el gasto ni la frecuencia de compra, mientras que sí existe una relación clara entre recibir boletín y usar vale. La empresa puede usar el boletín como palanca activa para incrementar el uso de vales y, con ello, la recurrencia de compra.
-
-2. **Diseñar la sucursal física y el catálogo digital como canales complementarios y no como audiencias separadas**, dado que el 54% de las transacciones ya ocurren en tienda física frente a un 46% distribuido entre los 4 navegadores. Esto implica invertir en integrar inventario y promociones entre ambos canales (ej. vales/boletines válidos en cualquiera de los dos) en lugar de tratar la apertura de la sucursal como un canal nuevo e independiente del negocio online ya existente.
-
 ## Análisis de tendencias
 
 **Ventas por mes:**
@@ -265,4 +231,58 @@ En conjunto, los resultados muestran que el desempeño comercial debe evaluarse 
 1. **Implementar campañas promocionales durante los meses con menor desempeño comercial**, principalmente en noviembre, utilizando boletines y vales como mecanismos de incentivo para aumentar la cantidad de compras. Posteriormente se puede comparar el comportamiento de las ventas antes y después de las campañas para determinar cuál de estas herramientas genera mejores resultados.
 
 2. **Investigar las causas de la baja utilización del Navegador 4 y mejorar la experiencia de compra en los canales digitales menos utilizados**, evaluando factores como compatibilidad, tiempos de carga, facilidad de navegación y funcionamiento del proceso de compra. Esta información puede utilizarse para reducir las diferencias existentes entre los diferentes navegadores y fortalecer el canal de ventas en línea.
+
+## Segmentación de clientes y correlación boletín-vale
+
+**Segmentación por edad:**
+
+Se agruparon los clientes en 5 rangos (18-25, 26-35, 36-45, 46-55, 56-79) y se calculó la venta y compras promedio de cada grupo. La correlación entre `Edad` y `Venta_total` es de -0.025, y entre `Edad` y `N_Compras` de -0.05, ambas prácticamente nulas.
+
+El grupo de **26-35 años** presenta la venta promedio más alta (**Q212.66**, 5.25 compras), y el de **56-79 años** la más baja (**Q192.46**, 4.73 compras), pero la diferencia entre extremos es de apenas Q20, por lo que la edad no explica de forma relevante el valor de compra.
+
+![Comportamiento de compra por grupo de edad](./graficos/4a_edad_venta.png)
+
+**Comportamiento de compra por género:**
+
+Se comparó la distribución de `Venta_total` entre clientes masculinos (3,372) y femeninos (3,128) mediante un diagrama de caja. Las medianas son casi idénticas (Q137.30 vs Q137.60) y una prueba de Mann-Whitney U arroja p = 0.649, sin diferencia estadísticamente significativa entre géneros.
+
+![Comportamiento de compra por género](./graficos/4b_genero_compra.png)
+
+**Segmentación por boletín y vale:**
+
+Se agruparon los clientes según si recibieron boletín y/o usaron vale, y se calculó la venta promedio de cada uno de los 4 segmentos. Los clientes con boletín gastan en promedio entre Q233.80 y Q242.57, frente a Q170.66-Q183.33 de los que no lo recibieron, una diferencia de Q50 a Q70 asociada principalmente a la recepción del boletín, no al uso del vale.
+
+![Venta promedio por boletín y vale](./graficos/4c_barras_boletin_vale.png)
+
+**Correlación entre boletín y vale:**
+
+Se construyó una tabla de contingencia Boletín x Vale y se aplicó una prueba de Chi-cuadrado de independencia: X^2 = 243.57, p < 0.001, phi = 0.19. El 27.76% de los clientes con boletín usa vale, frente a solo 12.38% de los que no lo reciben, una asociación estadísticamente significativa aunque de intensidad débil-moderada.
+
+![Relación entre boletín y uso de vale](./graficos/5c_boletin_vale.png)
+
+### Metodología de visualizaciones
+
+Se seleccionaron cuatro visualizaciones distintas según el tipo de dato y la pregunta a responder, evitando repetir el mismo tipo de gráfico sin justificación.
+
+Para la edad se usó un **gráfico de líneas**, ya que los grupos tienen un orden natural (ordinal) y una línea comunica mejor la tendencia que barras independientes entre sí.
+
+Para género se usó un **boxplot**, porque permite comparar mediana, dispersión y valores atípicos entre los dos grupos, algo que una barra de promedios ocultaría dado el sesgo de la variable `Venta_total`.
+
+Para boletín y vale (segmentación) se usó un **gráfico de barras agrupadas**, apropiado porque las 4 combinaciones son categóricas sin orden entre sí, una línea sugeriría una progresión inexistente en los datos.
+
+Para la correlación boletín-vale se usó un **gráfico de barras apiladas al 100%**, que muestra la proporción de uso de vale dentro de cada grupo de boletín, complementado con la prueba de Chi-cuadrado y el coeficiente Phi para respaldar el hallazgo con estadística formal.
+
+### Conclusión
+
+La edad y el género no son variables que expliquen diferencias relevantes en el comportamiento de compra dentro de este dataset. La correlación entre edad y venta total es de apenas -0.025, los 5 grupos gastan en un rango estrecho de Q192 a Q213, y la comparación por género no muestra diferencia significativa: las medianas de venta son casi idénticas (Q137.30 masculino vs Q137.60 femenino). Esto indica que no conviene diseñar campañas, promociones o segmentaciones de clientes basadas principalmente en estas dos variables demográficas, ya que ninguna explica de forma significativa el valor ni la frecuencia de compra.
+
+En contraste, el boletín sí se asocia con un comportamiento de compra distinto y accionable. Los clientes que reciben boletín gastan en promedio entre Q50 y Q70 más que quienes no lo reciben (Q233.80-Q242.57 frente a Q170.66-Q183.33), independientemente de si usan o no el vale, lo que sugiere que el boletín por sí solo ya está asociado a un mayor valor de compra.
+
+En conjunto, estos hallazgos sugieren que la empresa debería enfocar su segmentación de clientes en el comportamiento transaccional (uso de boletín y de vale) en lugar de en la demografía del cliente (edad, género), ya que es la variable que muestra una relación más clara, medible y accionable con el valor de compra. Esta conclusión es especialmente relevante para la empresa que planea abrir una sucursal física: refuerza que las estrategias de fidelización mediante boletines y vales deben aplicarse de forma transversal a todas las edades y géneros, y no dirigirse a un segmento demográfico específico, ya que la demografía del cliente no es un buen predictor de su valor o lealtad.
+
+### Acciones concretas
+
+1. **Ampliar el envío de boletines y usarlos como palanca activa para incrementar el uso de vales**, en vez de segmentar campañas por edad o género, ya que los datos muestran que recibir boletín se asocia tanto con una venta promedio más alta (Q50-70 adicionales) como con una mayor probabilidad de usar vale (27.76% vs 12.38%, X^2 = 243.57, p < 0.001).
+
+2. **Estandarizar las promociones de boletín y vale entre el canal físico y el digital**, dado que la segmentación por comportamiento transaccional demostró ser más relevante que la demografía del cliente. Al abrir la sucursal física, aplicar el mismo esquema de boletín/vale en ambos canales evitaría tratar la nueva tienda como una audiencia separada del negocio online ya existente.
 
