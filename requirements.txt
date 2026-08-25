@@ -1,0 +1,10 @@
+google-adk==2.7.1
+mcp==1.29.1
+pandas
+numpy
+scipy
+matplotlib
+sqlalchemy
+python-dotenv
+psycopg2-binary
+streamlit
