@@ -286,3 +286,4 @@ En conjunto, estos hallazgos sugieren que la empresa debería enfocar su segment
 
 2. **Estandarizar las promociones de boletín y vale entre el canal físico y el digital**, dado que la segmentación por comportamiento transaccional demostró ser más relevante que la demografía del cliente. Al abrir la sucursal física, aplicar el mismo esquema de boletín/vale en ambos canales evitaría tratar la nueva tienda como una audiencia separada del negocio online ya existente.
 
+
